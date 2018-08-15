@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xmlns:tx="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+
+    <!--identify the package that contains controller and scan the annotations-->
+    <context:component-scan base-package="com.rui.controller"/>
+    <mvc:default-servlet-handler/>
+    <mvc:annotation-driven/>
+
+    <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+            <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+            <!--<property name="prefix" value="/WEB-INF/pages/"/>-->
+        <property name="prefix" value="/"/>
+
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--&lt;!&ndash;identify the package that contains JPA Repository&ndash;&gt;-->
+    <!--<jpa:repositories base-package="com.rui.repository"/>-->
+    <!--&lt;!&ndash;link to persistence.xml&ndash;&gt;-->
+    <!--<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">-->
+            <!--<property name="persistenceUnitName" value="NewPersistenceUnit"/>-->
+    <!--</bean>-->
+    <!--events manager-->
+    <!--<tx:annotation-driven transaction-manager="transactionManager"/>-->
+
+    <!--&lt;!&ndash; Jpa事务管理 &ndash;&gt;-->
+    <!--<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">-->
+        <!--<property name="entityManagerFactory" ref="entityManagerFactory"/>-->
+    <!--</bean>-->
+
+    <!-- 开启事务管理注解 -->
+    <!--<tx:annotation-driven transaction-manager="transactionManager"/>-->
+    <!--<tx:annotation-driven>-->
+    <!--<transaction-manager>"transactionManager"</transaction-manager>-->
+    <!--</tx:annotation-driven>-->
+
+
+
+
+
+
+</beans>
