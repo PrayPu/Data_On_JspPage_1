@@ -22,9 +22,8 @@
             String remark=request.getParameter("remark_");
 
 
-            PreparedStatement pstmt=null;
+            PreparedStatement pstmt = con.prepareStatement("insert into data_1(parameter_name,parameter_value,remark) values(?,?,?)");
 
-            pstmt=con.prepareStatement("insert into data_1(parameter_name,parameter_value,remark) values(?,?,?)"); //sql insert query
             pstmt.setString(1,parameter_name);
             pstmt.setString(2,parameter_value);
             pstmt.setString(3,remark);
@@ -38,7 +37,7 @@
     }
     catch(Exception e)
     {
-        out.println(e);
+        System.out.println(e);
     }
 
 %>

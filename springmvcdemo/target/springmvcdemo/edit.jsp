@@ -11,21 +11,26 @@
         {
 //            int hide;
 //            hide=Integer.parseInt(request.getParameter("txt_hide")); //it is hidden id get for update record
-            String parameter_name=request.getParameter("paraname");
-            String parameter_value=request.getParameter("paraval");
-            String remark=request.getParameter("remark_");
+            String _parameter_name=request.getParameter("parameter_name");
+            String _parameter_value=request.getParameter("parameter_value");
+            String _remark=request.getParameter("remark");
 
-            PreparedStatement pstmt=null;
+            int id=Integer.parseInt(request.getParameter("edit"));
 
-            pstmt=con.prepareStatement("update data_1 set parameter_name=?, parameter_value=? where remark=?"); //sql update query
-            pstmt.setString(1,parameter_name);
-            pstmt.setString(2,parameter_value);
-            pstmt.setString(3,remark);
+
+            PreparedStatement pstmt = con.prepareStatement("update data_1 set parameter_name=?, parameter_value=?, remark=? where id = ?");
+
+            pstmt.setString(1,_parameter_name);
+            pstmt.setString(2,_parameter_value);
+            pstmt.setString(3,_remark);
+            pstmt.setInt(4,id);
             pstmt.executeUpdate(); //execute query
+//            out.println(id);
+//            out.println(_parameter_name);
 
             con.close(); //connection close
 
-            System.out.println("Update Successfully"); //after update record successfully message
+            out.println("Update Successfully"); //after update record successfully message
         }
 
     }
@@ -67,11 +72,13 @@
         <tr>
             <td>parameter_name</td>
             <td><input type="text" name="parameter_name" value="<%=parameter_name %>"></td>
+
         </tr>
 
         <tr>
             <td>parameter_value</td>
             <td><input type="text" name="parameter_value" value="<%=parameter_value %>"></td>
+
         </tr>
 
         <tr>
@@ -83,7 +90,7 @@
             <td><input type="submit" name="btn_update" value="Update"></td>
         </tr>
 
-        <input type="hidden" name="txt_hide" value="<%=id %>">
+        <%--<input type="hidden" name="txt_hide" value="<%=id %>">--%>
         <%
                     }
                 }
